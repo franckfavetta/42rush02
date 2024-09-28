@@ -84,6 +84,7 @@ int	ft_error(int nb)
 		write(2, "Dict Error\n", 11);
 		return (0);
 	}
+	return (0);
 }
 
 int	main(int ac, char **av)
