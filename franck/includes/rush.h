@@ -24,10 +24,10 @@ typedef struct s_data
 
 typedef struct s_range
 {
-	int	i_digit;
-	int	i_ten;
-	int	i_hundred;
-	int	i_big;
+	int	dg;
+	int	tn;
+	int	hn;
+	int	bg;
 }	t_range;
 
 void	parse_nb(char *sn, t_data *pdt);
@@ -35,6 +35,8 @@ void	extract_nb(char *sn, char *str);
 void	ft_putstr(char *str);
 void	ft_putsn(char *str, int sep);
 int		error(int errcode);
-void	fill_default(t_data *dt);
+void	fill_default_base(t_data *pdt);
+void	fill_default_except(t_data *pdt);
+void	loadfile(t_data *pdt);
 
 #endif

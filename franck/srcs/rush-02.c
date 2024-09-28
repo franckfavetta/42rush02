@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   rush-02.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffavetta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -38,8 +38,8 @@ int	error(int errcode)
 int	main(int argc, char **argv)
 {
 	t_data	dt;
-	char		sn[600];
-	char		*p;
+	char	sn[600];
+	char	*p;
 
 	if (argc < 2 || argc > 3)
 		return (error(1));
@@ -50,13 +50,18 @@ int	main(int argc, char **argv)
 		return (error(2));
 	if (*p == '+')
 		p++;
-	if (!(*p >= '0' && *p <= '9'))
-		return (error(3));
-	//ft_putstr(p);
-	fill_default(&dt);
+	while (*p == '0')
+		p++;
+	if (!(*p >= '1' && *p <= '9'))
+		if (*(--p) != '0')
+			return (error(3));
+	fill_default_base(&dt);
+	fill_default_except(&dt);
 	extract_nb(sn, p);
-	//ft_putstr(sn);
 	parse_nb(sn, &dt);
+	write(1, "\n", 1);
+	//for(int i=0;i<100;i++)
+	//	parse_nb(i, &dt);
 	return (0);
 }
 
@@ -69,8 +74,7 @@ int	main(int argc, char **argv)
 int main(int argc, char **argv)
 {
 
-	printf("%d\n", atoi("  +  +123fghj"));
+	printf("%d\n", atoi("    -0000123fghj"));
 	return (0);
 }
 */
-

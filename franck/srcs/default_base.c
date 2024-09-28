@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   default.c                                          :+:      :+:    :+:   */
+/*   default_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffavetta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "rush.h"
 
-void fill_digits(t_data *pdt)
+void	fill_digits(t_data *pdt)
 {
-	pdt->smalls[0][0] = "zero";
+	pdt->smalls[0][0] = "";
 	pdt->smalls[0][1] = "one";
 	pdt->smalls[0][2] = "two";
 	pdt->smalls[0][3] = "three";
@@ -22,11 +22,11 @@ void fill_digits(t_data *pdt)
 	pdt->smalls[0][5] = "five";
 	pdt->smalls[0][6] = "six";
 	pdt->smalls[0][7] = "seven";
-	pdt->smalls[0][8] = "heigth";
+	pdt->smalls[0][8] = "eigth";
 	pdt->smalls[0][9] = "nine";
-}	
+}
 
-void fill_tens(t_data *pdt)
+void	fill_tens(t_data *pdt)
 {
 	pdt->smalls[1][0] = "";
 	pdt->smalls[1][1] = "ten";
@@ -36,11 +36,11 @@ void fill_tens(t_data *pdt)
 	pdt->smalls[1][5] = "fifty";
 	pdt->smalls[1][6] = "sixty";
 	pdt->smalls[1][7] = "seventy";
-	pdt->smalls[1][8] = "heighty";
+	pdt->smalls[1][8] = "eighty";
 	pdt->smalls[1][9] = "ninety";
-}	
+}
 
-void fill_hundreds(t_data *pdt)
+void	fill_hundreds(t_data *pdt)
 {
 	pdt->smalls[2][0] = "";
 	pdt->smalls[2][1] = "one hundred";
@@ -52,9 +52,9 @@ void fill_hundreds(t_data *pdt)
 	pdt->smalls[2][7] = "seven hundred";
 	pdt->smalls[2][8] = "heigth hundred";
 	pdt->smalls[2][9] = "nine hundred";
-}	
+}
 
-void fill_bigs(t_data *pdt)
+void	fill_bigs(t_data *pdt)
 {
 	pdt->bigs[00] = "";
 	pdt->bigs[01] = "thousand";
@@ -80,7 +80,7 @@ void fill_bigs(t_data *pdt)
 	pdt->bigs[21] = "vigintillion";
 }
 
-void fill_default(t_data *pdt)
+void	fill_default_base(t_data *pdt)
 {
 	fill_digits(pdt);
 	fill_tens(pdt);
