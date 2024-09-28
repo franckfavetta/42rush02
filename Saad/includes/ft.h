@@ -19,10 +19,10 @@ typedef struct s_list
 	char	*val;
 }		t_list;
 long long int		ft_atoi(char *str);
-char	*ft_strdup(char *src);
-void	ft_putstr(char *str);
-char	*ft_getnb(int fd);
-char	*ft_getval(int fd, char *c);
-t_list	*extract(char *file);
+char				*ft_strdup(char *src);
+void				ft_putstr(char *str);
+char				*ft_getnb(int fd);
+char				*ft_getval(int fd, char *c);
+t_list				*extract(char *file);
 
 #endif
