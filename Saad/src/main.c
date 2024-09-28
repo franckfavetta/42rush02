@@ -76,7 +76,7 @@ int	ft_error(int nb)
 {
 	if (nb == 1)
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	else if (nb == 2)
@@ -84,7 +84,8 @@ int	ft_error(int nb)
 		write(2, "Dict Error\n", 11);
 		return (0);
 	}
-	return (0);
+	else
+		return (0);
 }
 
 int	main(int ac, char **av)
@@ -99,14 +100,14 @@ int	main(int ac, char **av)
 	{
 		if (ft_atoi(av[1]) < 0)
 			ft_error(1);
-		else if (!ft_atoi(av[1]))
+		else if (!ft_atoi(av[1]) && (ft_atoi(av[1]) != 0))
 			ft_error(2);
 		if (ac == 2)
 		{
 			tab = extract("numbers.dict");
 			ft_print(ft_atoi(av[1]), tab, first);
 		}
-		if (ac == 3)
+		else if (ac == 3)
 		{
 			tab = extract(av[1]);
 			ft_print(ft_atoi(av[2]), tab, first);
