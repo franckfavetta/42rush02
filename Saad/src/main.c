@@ -72,6 +72,20 @@ void	ft_print(int n, t_list *tab, int *first)
 		ft_print(n % mult, tab, first);
 }
 
+int	ft_error(int nb)
+{
+	if (nb == 1)
+	{
+		write(1, "Error\n", 6);
+		return (0);
+	}
+	else if (nb == 2)
+	{
+		write(2, "Dict Error\n", 11);
+		return (0);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*tab;
@@ -80,20 +94,22 @@ int	main(int ac, char **av)
 
 	addr_first = 1;
 	first = &addr_first;
-	if (ac == 2)
+	if (ac <= 3)
 	{
-		if (ft_atoi(av[1]) == 0)
+		if (ft_atoi(av[1]) < 0)
+			ft_error(1);
+		else if (!ft_atoi(av[1]))
+			ft_error(2);
+		if (ac == 2)
 		{
-			write(1, "zero\n", 5);
-			return (0);
+			tab = extract("numbers.dict");
+			ft_print(ft_atoi(av[1]), tab, first);
 		}
-		else if (ft_atoi(av[1]) < 0 || !ft_atoi(av[1]))
+		if (ac == 3)
 		{
-			write(2, "Dict Error\n", 11);
-			return (0);
+			tab = extract(av[1]);
+			ft_print(ft_atoi(av[2]), tab, first);
 		}
-		tab = extract("numbers.dict");
-		ft_print(ft_atoi(av[1]), tab, first);
 		write(1, "\n", 1);
 	}
 	return (0);
