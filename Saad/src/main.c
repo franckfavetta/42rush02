@@ -76,12 +76,12 @@ int	ft_case(int nb)
 {
 	if (nb == 1)
 	{
-		write(2, "Error\n", 6);
+		write(2, "Error", 5);
 		return (0);
 	}
 	else if (nb == 2)
 	{
-		write(1, "zero\n", 5);
+		write(1, "zero", 4);
 		return (0);
 	}
 	else
