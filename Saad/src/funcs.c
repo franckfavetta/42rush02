@@ -53,19 +53,16 @@ long long int	ft_atoi(char *str)
 		++str;
 	}
 	if (*str < '0' || *str > '9')
-		return (0);
+		return (-1);
 	else
 	{
-		while (*str && *str >= '0' && *str <= '9')
-		{
+		while (*str++ && *str++ >= '0' && *str++ <= '9')
 			res = res * 10 + (*str - 48);
-			++str;
-		}
-		if (sign < 0)
-			return (-1);
-		else
-			return (res * sign);
 	}
+	if (sign < 0)
+		return (-1);
+	else
+		return (res * sign);
 }
 
 void	ft_putstr(char *str)
