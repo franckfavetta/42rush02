@@ -1,4 +1,3 @@
-
 NAME = rush-02
 
 SRCS = src/main.c src/funcs.c src/rush02.c
