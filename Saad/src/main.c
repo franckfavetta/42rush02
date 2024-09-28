@@ -102,8 +102,11 @@ int	main(int ac, char **av)
 			ft_case(1);
 		else if (ft_atoi(av[1]) == 0)
 			ft_case(2);
-		tab = extract("numbers.dict");
-		ft_print(ft_atoi(av[1]), tab, first);
+		else
+		{
+			tab = extract("numbers.dict");
+			ft_print(ft_atoi(av[1]), tab, first);
+		}
 	}
 	else if (ac == 3)
 	{
