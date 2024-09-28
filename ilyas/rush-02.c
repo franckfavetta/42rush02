@@ -46,6 +46,44 @@ int	ft_puttab(int j, char *str)
 	return (j);
 }
 
+int     ft_atoi(char *str, int i)
+{
+        int     j;
+	int	smalls[3][10];
+	int	bigs[22];	
+
+	j = 0;
+        while (str[i] != ':')
+        {
+                if (str[i] >= '0' && str[i] <= '9')
+                {
+                        j++;
+                }
+                i++;
+        }
+	i = 0;
+	if (j < 4)
+	{
+		while (str[i] != ':')
+		{
+			if (str[i] >= '0' && str[i] <= '9')
+			{
+				nb = (nb * 10) + str[i] - 48;
+			}
+			i++;
+		}
+	}
+	if (j < 2)
+		smalls[0][nb] = //ft_strtok();
+	else if (j < 3 && 
+			!(j >= 11 && j <= 19))
+		smalls[1][nb / 10] = //ft_strtok();
+	else if (j < 4)
+		smalls[2][nb / 10] = 
+        return (i);
+}
+
+
 //This function separate a string
 void	ft_strtok(char *str)
 {
@@ -56,32 +94,19 @@ void	ft_strtok(char *str)
 	j = 0;
 	while (str[i] != '\0')
 	{
-		j = i; 
-		if (str[i] >= '0' && str[i] <= '9')
+		j = i;
+		i = ft_atoi(str, i);
+		//ft_ultimate_atoi(str);
+		/*if (str[i] >= '0' && str[i] <= '9')
 			ft_ultimate_atoi(str);
-		/*
+		
 		if (str[j] == ':')
 			i = ft_puttab(j + 2, str); */
 		i++;
 	}
 }
 
-int	ft_atoi(char *str)
-{
-	int	i;
-	int	nb;
-
-	i = 0;
-	nb = 0;
-	while (str[i] != ':')
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			nb = (nb * 10) + str[i] - 48;
-		i++;
-	}
-	return (nb);
-}
-
+/*
 int	*ft_write_tab(char *str)
 {
 	int	i;
@@ -98,27 +123,24 @@ int	*ft_write_tab(char *str)
 		while (j < 11)
 		{
 			nb = ft_atoi(str);
-			if ()
-			tab[i][j] = 
 			j++;
 		}
 		i++;
 	}
 	return (tab);
-}
+} */
 
 int	main(void)
 {
 	char	c[1000];
 	int		file_read;
 	int		file_open;
-	//char	*smalls[3][10];
-	//char	*bigs[22];
 
 	file_open = open("numbers.dict", O_RDONLY);
 	if (file_open != -1)
 	{
 		file_read = read(file_open, c, sizeof(c));
+		//ft_atoi(c);
 		ft_strtok(c);
 		//ft_putstr(c);
 	}
