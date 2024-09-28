@@ -12,65 +12,50 @@
 
 #include "rush.h"
 
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
-		write(1, str++, 1);
-}
-
-void	ft_putsn(char *str, int sep)
+void	extract_nb(char *sn, char *str)
 {
 	char	*p;
+	char	i;
+	int		lzf;
 
-	if (sep && p > str)
-		write(1, " ", 1);
 	p = str;
+	while (*p != '\0' && (*p >= '0' && *p <= '9'))
+		p++;
+	lzf = (3 - (p - str) % 3) * ((p - str) % 3 != 0);
+	p--;
+	while (*p != '\0' && (*p >= '0' && *p <= '9'))
+		*sn++ = *p--;
+	i = 0;
+	while (i++ < lzf)
+		*sn++ = '0';
+	*sn = '\0';
+}
+
+t_range	*exception(t_range *prg, t_data *pdt)
+{
+}
+
+void	parse_nb(char *sn, t_data *pdt)
+{
+	char	*p;
+	t_range	rg;
+
+	p = sn;
 	while (*p != '\0')
-		write(1, p++, 1);
-}
-
-int	error(int errcode)
-{
-	write(1, "Error\n", 6);
-	return (errcode);
-}
-
-int	main(int argc, char **argv)
-{
-	t_data	dt;
-	char		sn[600];
-	char		*p;
-
-	if (argc < 2 || argc > 3)
-		return (error(1));
-	p = argv[1 + (argc == 3)];
-	while (*p == ' ' || (*p >= 9 && *p <= 13))
 		p++;
-	if (*p == '-')
-		return (error(2));
-	if (*p == '+')
-		p++;
-	if (!(*p >= '0' && *p <= '9'))
-		return (error(3));
-	//ft_putstr(p);
-	fill_default(&dt);
-	extract_nb(sn, p);
-	//ft_putstr(sn);
-	parse_nb(sn, &dt);
-	return (0);
+	p -= 3;
+	while (p >= sn)
+	{
+		rg.i_digit = pdt->smalls[2][*(p + 2) - '0';
+		rg.i_ten = pdt->smalls[1][*(p + 1) - '0';
+		rg.i_hundred = pdt->smalls[0][*(p + 0) - '0';
+		rg.i_big = pdt->bigs[(p - sn) / 3];
+		exception(&rg, pdt);
+		
+		ft_putsn(pdt->smalls[2][*(p + 2) - '0'], 1);
+		ft_putsn(pdt->smalls[1][*(p + 1) - '0'], 1);
+		ft_putsn(pdt->smalls[0][*(p + 0) - '0'], 1);
+		ft_putsn(pdt->bigs[(p - sn) / 3], 1);
+		p -= 3;
+	}
 }
-
-//Created with Createx
-/*
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-
-int main(int argc, char **argv)
-{
-
-	printf("%d\n", atoi("  +  +123fghj"));
-	return (0);
-}
-*/
-
