@@ -111,6 +111,5 @@ int	main(int ac, char **av)
 		ft_print(ft_atoi(av[2]), tab, first);
 	}
 	write(1, "\n", 1);
-	}
 	return (0);
 }
