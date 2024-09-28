@@ -40,7 +40,7 @@ char	*ft_strdup(char *src)
 long long int	ft_atoi(char *str)
 {
 	long long int	res;
-	int	sign;
+	int				sign;
 
 	sign = 1;
 	res = 0;
