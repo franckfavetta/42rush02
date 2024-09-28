@@ -6,7 +6,7 @@
 /*   By: saidriss <saidriss@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:14:33 by saidriss          #+#    #+#             */
-/*   Updated: 2024/09/28 13:48:31 by saidriss         ###   ########.fr       */
+/*   Updated: 2024/09/28 21:45:31 by saidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+
+char	*ft_getval(int fd, char *c)
+{
+	int		i;
+	char	*str;
+
+	str = malloc(sizeof(char) * 128);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (c[0] != '\n')
+	{
+		str[i++] = c[0];
+		read(fd, c, 1);
+	}
+	return (str);
+}
 
 char	*ft_getnb(int fd)
 {
@@ -30,27 +47,8 @@ char	*ft_getnb(int fd)
 		read(fd, c, 1);
 	while (c[0] >= '0' && c[0] <= '9')
 	{
-		str[i] = c[0];
+		str[i++] = c[0];
 		read(fd, c, 1);
-		i++;
-	}
-	return (str);
-}
-
-char	*ft_getval(int fd, char *c)
-{
-	int		i;
-	char	*str;
-
-	str = malloc(sizeof(char) * 128);
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (c[0] != '\n')
-	{
-		str[i] = c[0];
-		read(fd, c, 1);
-		i++;
 	}
 	return (str);
 }
