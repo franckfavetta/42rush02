@@ -6,7 +6,7 @@
 /*   By: saidriss <saidriss@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:14:33 by saidriss          #+#    #+#             */
-/*   Updated: 2024/09/29 11:35:52 by saidriss         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:40:04 by saidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_list	*extract(char *file)
 	if (fd == -1 || (!tab))
 		return (NULL);
 	i = 0;
-	while (i++ < 40)
+	while (i++ <= 40)
 	{
 		tab[i].nb = ft_atoi(ft_getnb(fd));
 		read_space(fd, c);
