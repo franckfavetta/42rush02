@@ -6,7 +6,7 @@
 /*   By: saidriss <saidriss@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:14:33 by saidriss          #+#    #+#             */
-/*   Updated: 2024/09/29 12:40:04 by saidriss         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:57:31 by saidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ t_list	*extract(char *file)
 	char	c[1];
 
 	fd = open(file, O_RDONLY);
-	tab = malloc(sizeof(t_list) * 41);
+	tab = malloc(sizeof(t_list) * 33);
 	if (fd == -1 || (!tab))
 		return (NULL);
 	i = 0;
-	while (i++ <= 40)
+	while (i++ <= 32)
 	{
 		tab[i].nb = ft_atoi(ft_getnb(fd));
 		read_space(fd, c);
