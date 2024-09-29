@@ -6,7 +6,7 @@
 /*   By: saidriss <saidriss@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:17:39 by saidriss          #+#    #+#             */
-/*   Updated: 2024/09/29 10:56:26 by saidriss         ###   ########.fr       */
+/*   Updated: 2024/09/29 17:48:00 by saidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ double	ft_atoi(char *str)
 		res = res * 10 + (*str - 48);
 		++str;
 	}
-	if (*str == '.' || sign < 0)
+	if ((*str == '.' || sign < 0) && res != 0)
 		return (-1);
 	else
 		return (res * sign);
