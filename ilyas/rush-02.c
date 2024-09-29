@@ -6,7 +6,7 @@
 /*   By: ifounas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 10:23:26 by ifounas           #+#    #+#             */
-/*   Updated: 2024/09/28 19:24:01 by ifounas          ###   ########.fr       */
+/*   Updated: 2024/09/29 14:51:07 by ifounas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,133 +15,66 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-void    ft_putstr(char *str)
+void    ft_putstr(char *str);
+int	ft_puttab(int j, char *str, char *smalls[3][10]);
+int     ft_atoi(char *str, int i, char *smalls[3][10], char *res);
+
+void	ft_fill_tab(char *smalls[3][10], int nb, char *str)
 {
-        int     i;
-
-        i = -1;
-        while (str[++i] != '\0')
-                write(1, &str[i], 1);
-	write(1, "\n", 1);
+	if (nb < 10)
+		smalls[0][nb] = str;
+	else if (nb < 100)
+		smalls[1][nb/10] = str;
+	else if (nb > 90 && nb < 1000)
+		smalls[2][nb/100] = str;
 }
 
-int	ft_puttab(int j, char *str)
-{       
-        char    res[100];
-        int     k;
-
-        k = 0;
-        while (str[j] != '\n')
-        {
-                res[k] = str[j];
-                k++;
-                j++;
-        }
-        ft_putstr(res);
-	while (k > 0)
-	{
-		res[k] = '\0';
-		k--;
-	}
-	return (j);
-}
-
-int     ft_atoi(char *str, int i)
-{
-        int     j;
-	int	smalls[3][10];
-	int	bigs[22];	
-
-	j = 0;
-        while (str[i] != ':')
-        {
-                if (str[i] >= '0' && str[i] <= '9')
-                {
-                        j++;
-                }
-                i++;
-        }
-	i = 0;
-	if (j < 4)
-	{
-		while (str[i] != ':')
-		{
-			if (str[i] >= '0' && str[i] <= '9')
-			{
-				nb = (nb * 10) + str[i] - 48;
-			}
-			i++;
-		}
-	}
-	if (j < 2)
-		smalls[0][nb] = //ft_strtok();
-	else if (j < 3 && 
-			!(j >= 11 && j <= 19))
-		smalls[1][nb / 10] = //ft_strtok();
-	else if (j < 4)
-		smalls[2][nb / 10] = 
-        return (i);
-}
-
-
-//This function separate a string
-void	ft_strtok(char *str)
+void	ft_strtok(char *str, char *smalls[3][10])
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
+	smalls[0][0] = "truc";
 	while (str[i] != '\0')
 	{
 		j = i;
-		i = ft_atoi(str, i);
-		//ft_ultimate_atoi(str);
-		/*if (str[i] >= '0' && str[i] <= '9')
-			ft_ultimate_atoi(str);
-		
-		if (str[j] == ':')
-			i = ft_puttab(j + 2, str); */
+		/*if (str[j] >= '0' && str[j] <= '9')
+			i = ft_atoi(str, i, smalls);
+		*/i = ft_puttab(j, str, smalls);
 		i++;
 	}
 }
-
-/*
-int	*ft_write_tab(char *str)
-{
-	int	i;
-	int	j;
-	int	nb;
-	char	tab[3][10];
-
-	i = 0;
-	j = 0;
-	nb = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 11)
-		{
-			nb = ft_atoi(str);
-			j++;
-		}
-		i++;
-	}
-	return (tab);
-} */
 
 int	main(void)
 {
 	char	c[1000];
 	int		file_read;
 	int		file_open;
-
+	int		i;
+	int		j;
+	char	*smalls[3][10];
+	
+	i = 0;
+	j = 0;
 	file_open = open("numbers.dict", O_RDONLY);
 	if (file_open != -1)
 	{
 		file_read = read(file_open, c, sizeof(c));
-		//ft_atoi(c);
-		ft_strtok(c);
+		ft_strtok(c, smalls);
+		printf("%s", smalls[0][0]);
+		/* while (i < 3)
+		{
+			j = 0;
+			while (j < 10)
+			{
+				printf("%s", smalls[i][j]);
+				j++;
+			}
+			printf("\n");
+			i++;
+		}*/
 		//ft_putstr(c);
 	}
 	else
