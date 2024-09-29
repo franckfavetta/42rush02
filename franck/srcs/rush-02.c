@@ -65,7 +65,10 @@ int	main(int argc, char **argv)
 	while (*p == '0')
 		p++;
 	if (!(*p >= '1' && *p <= '9'))
-		*p = '0';
+		if (*p == '.')
+			return (error(3, "Error\n"));
+		else
+			*p = '0';
 	fill_default_base(&dt);
 	fill_default_except(&dt);
 	if (argc == 3)
@@ -75,8 +78,6 @@ int	main(int argc, char **argv)
 	if (parse_nb(sn, &dt))
 			return (error(4, "Dict Error\n"));
 	write(1, "\n", 1);
-	//for(int i=0;i<100;i++)
-	//	parse_nb(i, &dt);
 	return (0);
 }
 
