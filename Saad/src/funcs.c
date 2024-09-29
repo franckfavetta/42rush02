@@ -6,7 +6,7 @@
 /*   By: saidriss <saidriss@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:17:39 by saidriss          #+#    #+#             */
-/*   Updated: 2024/09/28 21:49:20 by saidriss         ###   ########.fr       */
+/*   Updated: 2024/09/29 10:56:26 by saidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ char	*ft_strdup(char *src)
 	return (dest);
 }
 
-long long int	ft_atoi(char *str)
+double	ft_atoi(char *str)
 {
-	long long int	res;
-	int				sign;
+	double	res;
+	int		sign;
 
 	sign = 1;
 	res = 0;
@@ -59,7 +59,7 @@ long long int	ft_atoi(char *str)
 		res = res * 10 + (*str - 48);
 		++str;
 	}
-	if (sign < 0)
+	if (*str == '.' || sign < 0)
 		return (-1);
 	else
 		return (res * sign);

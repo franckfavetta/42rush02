@@ -6,7 +6,7 @@
 /*   By: saidriss <saidriss@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:15:45 by saidriss          #+#    #+#             */
-/*   Updated: 2024/09/29 09:28:19 by saidriss         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:25:34 by saidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	getdec(int nb)
 		return (0);
 }
 
-long long int	getmult(long long int nb)
+double	getmult(double nb)
 {
 	if (nb >= 1000000000)
 		return (1000000000);
@@ -53,10 +53,10 @@ long long int	getmult(long long int nb)
 		return (getdec(nb));
 }
 
-void	ft_print(long long int n, t_list *tab, int *first)
+void	ft_print(long long n, t_list *tab, int *first)
 {
-	int				i;
-	long long int	mult;
+	int			i;
+	long long	mult;
 
 	i = 0;
 	mult = getmult(n);
