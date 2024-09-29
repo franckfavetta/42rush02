@@ -78,10 +78,16 @@ void	fill_bigs(t_data *pdt)
 	pdt->bigs[19] = "octodecillion";
 	pdt->bigs[20] = "novemdecillion";
 	pdt->bigs[21] = "vigintillion";
+	pdt->bigs[101] = "centillion";
 }
 
 void	fill_default_base(t_data *pdt)
 {
+	int	i;
+
+	i = 0;
+	while(i < 200)
+		pdt->bigs[i++] = "";
 	fill_digits(pdt);
 	fill_tens(pdt);
 	fill_hundreds(pdt);

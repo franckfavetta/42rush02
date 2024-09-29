@@ -12,9 +12,11 @@
 
 #include "rush.h"
 
-void	loadfile(t_data *pdt)
+int	loadfile(t_data *pdt)
 {
 	//load file code here
 	//fill & replace dict (base + exceptions) stored in pdt
 	//(ignore exceptions found in file)
+	//return : 0 -> OK 1 -> ERROR
+	return (0);
 }

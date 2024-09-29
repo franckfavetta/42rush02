@@ -17,7 +17,7 @@
 typedef struct s_data
 {
 	char	*smalls[3][10];
-	char	*bigs[22];
+	char	*bigs[200];
 	int		exkey[1000];
 	char	*exval[1000];
 }	t_data;
@@ -30,13 +30,13 @@ typedef struct s_range
 	int	bg;
 }	t_range;
 
-void	parse_nb(char *sn, t_data *pdt);
+int		parse_nb(char *sn, t_data *pdt);
 void	extract_nb(char *sn, char *str);
 void	ft_putstr(char *str);
-void	ft_putsn(char *str, int sep);
-int		error(int errcode);
+void	ft_putsn(char *str, int *isfirst);
+int		error(int errcode, char *msg);
 void	fill_default_base(t_data *pdt);
 void	fill_default_except(t_data *pdt);
-void	loadfile(t_data *pdt);
+int		loadfile(t_data *pdt);
 
 #endif

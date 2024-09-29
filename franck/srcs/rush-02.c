@@ -18,20 +18,32 @@ void	ft_putstr(char *str)
 		write(1, str++, 1);
 }
 
-void	ft_putsn(char *str, int sep)
+void	ft_putsn(char *str, int *dosep)
 {
 	char	*p;
 
-	if (sep && p > str)
-		write(1, " ", 1);
 	p = str;
 	while (*p != '\0')
-		write(1, p++, 1);
+		p++;
+	if (p > str)
+	{
+		if (*dosep)
+			write(1, " ", 1);
+		p = str;
+		while (*p != '\0')
+			write(1, p++, 1);
+		*dosep = 1;
+	}
 }
 
-int	error(int errcode)
+int	error(int errcode, char *msg)
 {
-	write(1, "Error\n", 6);
+	char *p;
+
+	p = msg;
+	while (*p != '\0')
+		p++;
+	write(1, msg, p - msg);
 	return (errcode);
 }
 
@@ -42,23 +54,27 @@ int	main(int argc, char **argv)
 	char	*p;
 
 	if (argc < 2 || argc > 3)
-		return (error(1));
+		return (error(1, "Error\n"));
 	p = argv[1 + (argc == 3)];
 	while (*p == ' ' || (*p >= 9 && *p <= 13))
 		p++;
 	if (*p == '-')
-		return (error(2));
+		return (error(2, "Error\n"));
 	if (*p == '+')
 		p++;
 	while (*p == '0')
 		p++;
 	if (!(*p >= '1' && *p <= '9'))
 		if (*(--p) != '0')
-			return (error(3));
+			return (error(3, "Error\n"));
 	fill_default_base(&dt);
 	fill_default_except(&dt);
+	if (argc == 3)
+		if (loadfile(&dt))
+				return (error(4, "Dict Error\n"));
 	extract_nb(sn, p);
-	parse_nb(sn, &dt);
+	if (parse_nb(sn, &dt))
+			return (error(4, "Dict Error\n"));
 	write(1, "\n", 1);
 	//for(int i=0;i<100;i++)
 	//	parse_nb(i, &dt);

@@ -1,7 +1,6 @@
-functname = rush-02
+execname = ./rush-02
 headers = includes/rush.h
-execname = ./$(functname)
-src = $(wildcard srcs/*.c)
+src = srcs/default_base.c srcs/default_except.c srcs/loadfile.c srcs/sn_parsing.c srcs/rush-02.c
 obj = $(src:srcs/%.c=obj/%.o)
 
 
