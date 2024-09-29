@@ -65,8 +65,7 @@ int	main(int argc, char **argv)
 	while (*p == '0')
 		p++;
 	if (!(*p >= '1' && *p <= '9'))
-		if (*(--p) != '0')
-			return (error(3, "Error\n"));
+		*p = '0';
 	fill_default_base(&dt);
 	fill_default_except(&dt);
 	if (argc == 3)
@@ -83,6 +82,7 @@ int	main(int argc, char **argv)
 
 //Created with Createx
 /*
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 int main(int argc, char **argv)
 {
 
-	printf("%d\n", atoi("    -0000123fghj"));
+	printf("%d\n", atoi("   d -0000123fghj"));
 	return (0);
 }
 */
